@@ -1,0 +1,98 @@
+class AgeNotWithinRangeException extends Exception {
+    public AgeNotWithinRangeException(String message) {
+        super(message);
+    }
+}
+
+class NameNotValidException extends Exception {
+    public NameNotValidException(String message) {
+        super(message);
+    }
+}
+
+class Student {
+    private int rollNo;
+    private String name;
+    private int age;
+    private String course;
+
+    public Student(int rollNo, String name, int age, String course) throws AgeNotWithinRangeException, NameNotValidException {
+        if (age < 15 || age > 21) {
+            throw new AgeNotWithinRangeException("Age should be between 15 and 21");
+        }
+
+        if (!isValidName(name)) {
+            throw new NameNotValidException("Name contains numbers or special symbols");
+        }
+
+        this.rollNo = rollNo;
+        this.name = name;
+        this.age = age;
+        this.course = course;
+    }
+
+    private boolean isValidName(String name) {
+        // Regex checks  if name contains only alphabets and spaces
+        return name.matches("[a-zA-Z\\s]+");
+    }
+
+    // Getters and setters
+    public int getRollNo() {
+        return rollNo;
+    }
+
+    public void setRollNo(int rollNo) {
+        this.rollNo = rollNo;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public String getCourse() {
+        return course;
+    }
+
+    public void setCourse(String course) {
+        this.course = course;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" + "rollNo=" + rollNo + ", name='" + name + '\'' + ", age=" + age + ", course='" + course + '\'' + '}';
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        try {
+            Student student1 = new Student(22, "SIVA", 20, "AEROSPACE ENGINEERING");
+            System.out.println(student1);
+
+        } catch (AgeNotWithinRangeException | NameNotValidException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+
+
+OUTPUT:
+
+
+/Users/sivasundareshram/Library/Java/JavaVirtualMachines/corretto-21.0.2/Contents/Home/bin/java -javaagent:/Applications/IntelliJ IDEA CE.app/Contents/lib/idea_rt.jar=49826:/Applications/IntelliJ IDEA CE.app/Contents/bin -Dfile.encoding=UTF-8 -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8 -classpath /Users/sivasundareshram/IdeaProjects/Task 4/out/production/Task 4 Main
+Student{rollNo=22, name='SIVA', age=20, course='AEROSPACE ENGINEERING'}
+
+Process finished with exit code 0

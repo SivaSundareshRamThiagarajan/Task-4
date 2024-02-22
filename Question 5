@@ -1,0 +1,81 @@
+import java.util.EmptyStackException;
+
+public class IntStack {
+    private static final int MAX_SIZE = 1000;
+    private int[] stackArray;
+    private int highest;
+
+    // Constructor to initialize the stack
+    public IntStack() {
+        stackArray = new int[MAX_SIZE];
+        highest = -1;
+    }
+
+    // Method to push elements onto the stack
+    public void push(int element) {
+        if (highest == MAX_SIZE - 1) {
+            // Stack is full
+            System.out.println("Stack overflow. Cannot push element " + element);
+            return;
+        }
+        stackArray[++highest] = element;
+        System.out.println("Element " + element + " pushed onto the stack");
+    }
+
+    // Method to pop elements from the stack
+    public int pop() {
+        if (isEmpty()) {
+            // Stack is empty
+            throw new EmptyStackException();
+        }
+        int poppedElement = stackArray[highest--];
+        System.out.println("Element " + poppedElement + " popped from the stack");
+        return poppedElement;
+    }
+
+    // Method to check if the stack is empty
+    public boolean isEmpty() {
+        return highest == -1;
+    }
+
+    public static void main(String[] args) {
+        IntStack stack = new IntStack();
+
+        stack.push(22);
+        stack.push(33);
+        stack.push(44);
+
+        System.out.println("Popped element: " + stack.pop());
+        System.out.println("Popped element: " + stack.pop());
+
+        stack.push(55);
+        stack.push(66);
+
+        System.out.println("Popped element: " + stack.pop());
+        System.out.println("Popped element: " + stack.pop());
+
+        // Check if the stack is empty
+        System.out.println("Is the stack empty? " + stack.isEmpty());
+    }
+}
+
+
+OUTPUT:
+
+/Users/sivasundareshram/Library/Java/JavaVirtualMachines/corretto-21.0.2/Contents/Home/bin/java -javaagent:/Applications/IntelliJ IDEA CE.app/Contents/lib/idea_rt.jar=49905:/Applications/IntelliJ IDEA CE.app/Contents/bin -Dfile.encoding=UTF-8 -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8 -classpath /Users/sivasundareshram/IdeaProjects/Task 4/out/production/Task 4 IntStack
+Element 22 pushed onto the stack
+Element 33 pushed onto the stack
+Element 44 pushed onto the stack
+Element 44 popped from the stack
+Popped element: 44
+Element 33 popped from the stack
+Popped element: 33
+Element 55 pushed onto the stack
+Element 66 pushed onto the stack
+Element 66 popped from the stack
+Popped element: 66
+Element 55 popped from the stack
+Popped element: 55
+Is the stack empty? false
+
+Process finished with exit code 0

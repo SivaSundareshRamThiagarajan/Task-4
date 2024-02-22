@@ -1,0 +1,31 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        String[] weekdays = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the day position (0-6): ");
+        int dayPosition = scanner.nextInt();
+
+        try {
+            String dayName = getDayName(weekdays, dayPosition);
+            System.out.println("The day is: " + dayName);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Invalid day position.");
+        }
+    }
+
+    public static String getDayName(String[] weekdays, int dayPosition) throws ArrayIndexOutOfBoundsException {
+        return weekdays[dayPosition];
+    }
+}
+
+
+OUTPUT:
+
+/Users/sivasundareshram/Library/Java/JavaVirtualMachines/corretto-21.0.2/Contents/Home/bin/java -javaagent:/Applications/IntelliJ IDEA CE.app/Contents/lib/idea_rt.jar=49845:/Applications/IntelliJ IDEA CE.app/Contents/bin -Dfile.encoding=UTF-8 -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8 -classpath /Users/sivasundareshram/IdeaProjects/Task 4/out/production/Task 4 Main
+Enter the day position (0-6): 5
+The day is: Friday
+
+Process finished with exit code 0

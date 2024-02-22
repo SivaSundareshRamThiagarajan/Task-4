@@ -1,0 +1,67 @@
+import java.util.HashMap;
+
+public class StudentGrades {
+    private HashMap<String, Integer> studentGrades;
+
+    public StudentGrades() {
+        studentGrades = new HashMap<>();
+    }
+
+    // Method to add a new student
+    public void addStudent(String name, int grade) {
+        studentGrades.put(name, grade);
+        System.out.println("Student " + name + " added with grade " + grade);
+    }
+
+    // Method to remove a student
+    public void removeStudent(String name) {
+        if (studentGrades.containsKey(name)) {
+            studentGrades.remove(name);
+            System.out.println("Student " + name + " removed successfully");
+        } else {
+            System.out.println("Student " + name + " not found");
+        }
+    }
+
+    // Method to display a student's grade by name
+    public void displayGrade(String name) {
+        if (studentGrades.containsKey(name)) {
+            int grade = studentGrades.get(name);
+            System.out.println("Grade of student " + name + " is: " + grade);
+        } else {
+            System.out.println("Student " + name + " not found");
+        }
+    }
+
+    public static void main(String[] args) {
+        StudentGrades studentGrades = new StudentGrades();
+
+        // Adding students
+        studentGrades.addStudent("Alice", 85);
+        studentGrades.addStudent("Bob", 90);
+
+        // Displaying grade
+        studentGrades.displayGrade("Alice");
+
+        // Removing a student
+        studentGrades.removeStudent("Bob");
+
+        // Displaying grade of non-existent student
+        studentGrades.displayGrade("Charlie");
+    }
+}
+
+
+
+
+OUTPUT:
+
+
+/Users/sivasundareshram/Library/Java/JavaVirtualMachines/corretto-21.0.2/Contents/Home/bin/java -javaagent:/Applications/IntelliJ IDEA CE.app/Contents/lib/idea_rt.jar=49896:/Applications/IntelliJ IDEA CE.app/Contents/bin -Dfile.encoding=UTF-8 -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8 -classpath /Users/sivasundareshram/IdeaProjects/Task 4/out/production/Task 4 StudentGrades
+Student SIVA added with grade 95
+Student RAM added with grade 100
+Grade of student SIVA is: 95
+Student RAM has been removed.
+Student SUNDARESH not found
+
+Process finished with exit code 0

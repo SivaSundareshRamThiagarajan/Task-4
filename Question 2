@@ -1,0 +1,72 @@
+class InvalidAgeException extends Exception {
+    public InvalidAgeException(String message) {
+        super(message);
+    }
+}
+
+class Voter {
+    private int voterId;
+    private String name;
+    private int age;
+
+    public Voter(int voterId, String name, int age) throws InvalidAgeException {
+        if (age < 18) {
+            throw new InvalidAgeException("Invalid age to vote");
+        }
+        this.voterId = voterId;
+        this.name = name;
+        this.age = age;
+    }
+
+    // Getters and setters
+    public int getVoterId() {
+        return voterId;
+    }
+
+    public void setVoterId(int voterId) {
+        this.voterId = voterId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    @Override
+    public String toString() {
+        return "Voter{" + "voterId=" + voterId + ", name='" + name + '\'' + ", age=" + age + '}';
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        try {
+            Voter voter1 = new Voter(1022, "SIVA", 20);
+            System.out.println(voter1);
+        }
+        catch (InvalidAgeException e)
+        {
+            e.printStackTrace();
+        }
+    }
+}
+
+
+
+OUTPUT:
+
+/Users/sivasundareshram/Library/Java/JavaVirtualMachines/corretto-21.0.2/Contents/Home/bin/java -javaagent:/Applications/IntelliJ IDEA CE.app/Contents/lib/idea_rt.jar=49841:/Applications/IntelliJ IDEA CE.app/Contents/bin -Dfile.encoding=UTF-8 -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8 -classpath /Users/sivasundareshram/IdeaProjects/Task 4/out/production/Task 4 Main
+Voter{voterId=1022, name='SIVA', age=20}
+
+Process finished with exit code 0
